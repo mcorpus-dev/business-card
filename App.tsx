@@ -41,7 +41,7 @@ export default function App() {
               <Text style={styles.designation}>{data.designation}</Text>
             </View>
 
-            <View style={styles.socialsContainer}>
+            <View style={{ flexDirection: "row", gap: 28 }}>
               {data.socials.map((social) => (
                 <SocialButton
                   key={social.url}
@@ -61,6 +61,7 @@ export default function App() {
               <ScrollView
                 contentContainerStyle={{ gap: 12, padding: 12 }}
                 horizontal
+                showsHorizontalScrollIndicator={false}
               >
                 {data.projects.map((project) => (
                   <ProjectCard
@@ -81,9 +82,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   banner: {
     width: "100%",
     aspectRatio: 16 / 9,
@@ -107,10 +105,6 @@ const styles = StyleSheet.create({
   },
   designation: {
     color: "grey",
-  },
-  socialsContainer: {
-    flexDirection: "row",
-    gap: 28,
   },
   bio: {
     color: "black",
