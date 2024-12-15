@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   bio: {
     fontSize: 16,
     lineHeight: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
   contactButton: {
     fontSize: 16,
