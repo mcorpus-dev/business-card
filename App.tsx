@@ -11,6 +11,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import SocialButton from "./src/components/SocialButton";
+import TextButton from "./src/components/TextButton";
 import Section from "./src/components/Section";
 import ProjectCard from "./src/components/ProjectCard";
 
@@ -21,11 +22,15 @@ export default function App() {
     Linking.openURL(social);
   };
 
+  const handleContact = () => {
+    Linking.openURL(`mailto:${data.email}`);
+  };
+
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.screen} edges={["bottom"]}>
+      <SafeAreaView style={{ flex: 1 }} edges={["bottom"]}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.container}>
+          <View style={{ flex: 1 }}>
             <Image
               style={styles.banner}
               source={{
@@ -33,30 +38,37 @@ export default function App() {
               }}
             />
 
-            <Image
-              style={styles.avatar}
-              source={{ uri: "https://i.pravatar.cc/300" }}
-            />
+            <View style={{ alignItems: "center", gap: 16 }}>
+              <View style={{ alignItems: "center" }}>
+                <Image
+                  style={styles.avatar}
+                  source={{ uri: "https://i.pravatar.cc/300" }}
+                />
+                <Text style={styles.name}>{data.name}</Text>
+                <Text style={styles.designation}>{data.designation}</Text>
+              </View>
 
-            <Text style={styles.name}>{data.name}</Text>
-            <Text style={styles.designation}>{data.designation}</Text>
+              <View style={{ flexDirection: "row", gap: 24 }}>
+                <SocialButton
+                  icon={<FontAwesome6 name="github" size={24} color="black" />}
+                  onPress={() => handleSocial(data.socials.github)}
+                />
+                <SocialButton
+                  icon={
+                    <FontAwesome6 name="linkedin" size={24} color="black" />
+                  }
+                  onPress={() => handleSocial(data.socials.linkedin)}
+                />
+                <SocialButton
+                  icon={<FontAwesome6 name="link" size={24} color="black" />}
+                  onPress={() => handleSocial(data.socials.website)}
+                />
+              </View>
 
-            <View style={styles.socialsContainer}>
-              <SocialButton
-                icon={<FontAwesome6 name="github" size={24} color="black" />}
-                onPress={() => handleSocial(data.socials.github)}
-              />
-              <SocialButton
-                icon={<FontAwesome6 name="linkedin" size={24} color="black" />}
-                onPress={() => handleSocial(data.socials.linkedin)}
-              />
-              <SocialButton
-                icon={<FontAwesome6 name="link" size={24} color="black" />}
-                onPress={() => handleSocial(data.socials.website)}
-              />
+              <TextButton title="Contact Me" onPress={handleContact} />
+
+              <Text style={styles.bio}>{data.bio}</Text>
             </View>
-
-            <Text style={styles.bio}>{data.bio}</Text>
 
             <Section containerStyle={{ marginTop: 20 }} title="Projects">
               <FlatList
@@ -76,12 +88,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  container: {
-    alignItems: "center",
-  },
   banner: {
     width: "100%",
     aspectRatio: 16 / 9,
@@ -97,19 +103,14 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 28,
     fontWeight: "bold",
-    textAlign: "center",
   },
   designation: {
     color: "grey",
-    textAlign: "center",
-  },
-  socialsContainer: {
-    flexDirection: "row",
-    gap: 24,
-    marginVertical: 16,
   },
   bio: {
     fontSize: 16,
     lineHeight: 24,
+    textAlign: "center",
+    paddingHorizontal: 12,
   },
 });

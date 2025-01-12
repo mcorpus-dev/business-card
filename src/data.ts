@@ -1,5 +1,6 @@
 export default {
   name: "Marc Corpus",
+  email: "mcorpus.dev@gmail.com",
   designation: "Software Engineer",
   socials: {
     github: "https://github.com/mcorpus-dev",
