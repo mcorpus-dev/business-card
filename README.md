@@ -1,3 +1,3 @@
 ## React Native Business Card
 
-<img src="https://github.com/user-attachments/assets/e57455fa-d602-4d71-a5f3-d8f69c6f2a05" width="250" />
+<img src="https://github.com/user-attachments/assets/9e368659-9334-4b32-b3e3-371acba416ae" width="250" />
