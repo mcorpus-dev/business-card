@@ -7,6 +7,7 @@ import {
   Linking,
   FlatList,
 } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -82,6 +83,8 @@ export default function App() {
             </Section>
           </View>
         </ScrollView>
+
+        <StatusBar style="light" />
       </SafeAreaView>
     </SafeAreaProvider>
   );
